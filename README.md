@@ -13,7 +13,8 @@ I have tried OrganicMaps, which now updates my current position (yay!).
 ![image](pics/location-services.png)
 
 It says that your location data will be sent to Mozilla, but I don't think that service works, and regardless,
-can be disabled in geoclue.conf
+can be disabled in ```geoclue.conf``` (this is jumping ahead but just set ```submit-data``` to false).
+
 
 ## Setup geoclue and gnss-share
 Install geoclue and gnss-share:
@@ -133,6 +134,9 @@ ReadWritePaths=/var/run/gnss-share.sock
 flatpak install flathub app.organicmaps.desktop
 flatpak run app.organicmaps.desktop
 ```
+Go to the Ubuntu control panel, and enable access on the Privacy & Security tab:
+![image](pics/location-services.png)
+
 
 ## References
 https://w3.cs.jmu.edu/bernstdh/web/common/help/nmea-sentences.php</br>

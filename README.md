@@ -1,7 +1,7 @@
 # ubuntu-geoclue-gps
 Some notes on getting geoclue to work with a serial (over USB) attached GPS
 
-This is a guide mostly to remind myself how to get Untuntu desktop working with a GPSs module.
+This is a guide mostly to remind myself how to get Untuntu desktop working with a GPS module.
 The big takeaway, is *not* to install gpsd! The desktop uses geoclue, which does not like talking to gpsd.
 
 The magic combination, is gnss-share + geoclue-2.0 + some mapping software

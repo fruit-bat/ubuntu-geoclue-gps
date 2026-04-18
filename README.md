@@ -54,7 +54,51 @@ You should see some NMEA output e.g.
 $GPGSV,2,1,08,02,74,042,45,04,18,190,36,07,67,279,42,12,29,323,36*77
 $GPGSV,2,2,08,15,30,050,47,19,09,158,,26,12,281,40,27,38,173,41*7B
 ```
+Edit the geoclue configuration:
+```sh
+sudo vi /etc/geoclue/geoclue.conf
+```
 
+Change the NMEA section to use the socket provided by gnss-share:
+```sh
+# Network NMEA source configuration options
+[network-nmea]
+
+# Fetch location from NMEA sources on local network?
+enable=true
+
+# use aa nmea unix socket as the data source
+# nnmea-socket=
+nmea-socket=/var/run/gnss-share.sock
+```
+While you are at it, disable pretty much every other source.
+
+Restart the geoclue service:
+```sh
+sudo systemctl restart geoclue
+```
+Check how it is getting on...
+```sh
+sudo journalctl -f -u geoclue
+```
+
+Check location data is being presented:
+```sh
+/usr/libexec/geoclue-2.0/demos/where-am-i
+```
+
+You should get something like:
+```sh
+New location:
+Latitude:    69.841348°
+Longitude:   -4.046143°
+Accuracy:    0.000000 meters
+Altitude:    96.300000 meters
+Speed:       0.252076 meters/second
+Heading:     135.000000°
+Description: GPS GGA
+Timestamp:   Sat 18 Apr 2026 03:42:17 PM BST (1776523337 seconds since the Epoch)
+```
 
 
 

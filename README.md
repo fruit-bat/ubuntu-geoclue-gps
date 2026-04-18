@@ -8,6 +8,13 @@ The magic combination, is gnss-share + geoclue-2.0 + some mapping software
 
 I have tried OrganicMaps, which now updates my current position (yay!). 
 
+## Enable Ubuntu location services
+
+![image](pics/location-services.png)
+
+It says that your location data will be sent to Mozilla, but I don't think that service works, and regardless,
+can be disabled in geoclue.conf
+
 ## Setup geoclue and gnss-share
 Install geoclue and gnss-share:
 ```sh

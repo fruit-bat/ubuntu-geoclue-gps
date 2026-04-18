@@ -1,6 +1,7 @@
 # ubuntu-geoclue-gps
 Some notes on getting geoclue to work with a serial (over USB) attached GPS
 
+## Setup geoclue and gnss-share
 Install geoclue and gnss-share:
 ```sh
 sudo apt-get install geoclue-2.0 geoclue-2.0-demo gnss-share
@@ -100,7 +101,18 @@ Description: GPS GGA
 Timestamp:   Sat 18 Apr 2026 03:42:17 PM BST (1776523337 seconds since the Epoch)
 ```
 
-
+## Trouble shooting
+If geoclue is unable to read from the gnss-share socket, adding permissions to the service may help:
+```sh
+sudo systemctl edit geoclue.service
+```
+And add the following lines in the area prompted:
+```sh
+[Service]
+ReadWritePaths=/var/run/gnss-share.sock
+# Alternatively, if /var/run is a symlink:
+# ReadWritePaths=/run/gnss-share.sock
+```
 
 ## References
 https://w3.cs.jmu.edu/bernstdh/web/common/help/nmea-sentences.php</br>

@@ -34,3 +34,14 @@ device_baud_rate=115200
 # Directory to load/store almanac and ephemeris data
 agps_directory="/var/cache/gnss-share"
 ```
+
+Restart the gnss-share service:
+```sh
+sudo systemctl restart gnss-share
+```
+
+Check the gnss-share socket is working
+```
+nc -U /var/run/gnss-share.sock
+```
+

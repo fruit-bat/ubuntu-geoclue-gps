@@ -39,9 +39,27 @@ Restart the gnss-share service:
 ```sh
 sudo systemctl restart gnss-share
 ```
+Check the socket permissions:
+```sh
+ls -l /var/run/gnss-share.sock
+srw-rw---- 1 root geoclue 0 Apr 18 15:24 /var/run/gnss-share.sock
+```
 
 Check the gnss-share socket is working
+```sh
+sudo nc -U /var/run/gnss-share.sock
 ```
-nc -U /var/run/gnss-share.sock
+You should see some NMEA output e.g.
+```sh
+$GPGSV,2,1,08,02,74,042,45,04,18,190,36,07,67,279,42,12,29,323,36*77
+$GPGSV,2,2,08,15,30,050,47,19,09,158,,26,12,281,40,27,38,173,41*7B
 ```
+
+
+
+
+## References
+https://w3.cs.jmu.edu/bernstdh/web/common/help/nmea-sentences.php</br>
+
+
 

@@ -1,6 +1,13 @@
 # ubuntu-geoclue-gps
 Some notes on getting geoclue to work with a serial (over USB) attached GPS
 
+This is a guide mostly to remind myself how to get Untuntu desktop working with a GPSs module.
+The big takeaway, is *not* to install gpsd! The desktop uses geoclue, which does not like talking to gpsd.
+
+The magic combination, is gnss-share + geoclue-2.0 + some mapping software
+
+I have tried OrganicMaps, which now updates my current position (yay!). 
+
 ## Setup geoclue and gnss-share
 Install geoclue and gnss-share:
 ```sh
@@ -112,6 +119,12 @@ And add the following lines in the area prompted:
 ReadWritePaths=/var/run/gnss-share.sock
 # Alternatively, if /var/run is a symlink:
 # ReadWritePaths=/run/gnss-share.sock
+```
+
+## Install OrganicMaps
+```sh
+flatpak install flathub app.organicmaps.desktop
+flatpak run app.organicmaps.desktop
 ```
 
 ## References
